@@ -183,7 +183,7 @@ def _generate_cn_titles(records: list[EventRecord]) -> None:
             try:
                 import time
                 if attempt > 0:
-                    time.sleep(5 * attempt)
+                    time.sleep(60)  # wait for rate-limit window to reset
                 result = client.chat(
                     "You translate English headlines to fluent, concise Chinese. "
                     "Preserve technical acronyms. Output format: N. Chinese translation.",
