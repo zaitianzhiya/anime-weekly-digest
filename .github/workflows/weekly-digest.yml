@@ -2,7 +2,7 @@ name: Weekly Anime Digest
 
 on:
   schedule:
-    - cron: '57 10 * * 1'   # 每周一 UTC 10:57 = 北京时间 18:57
+    - cron: '45 10 * * 1'
   workflow_dispatch:
 
 concurrency:
