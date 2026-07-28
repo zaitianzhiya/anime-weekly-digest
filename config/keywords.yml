@@ -1,0 +1,165 @@
+# ── Anime Weekly Digest — 关键词与分类配置 ──
+
+# 7 大分类 + 关键词映射
+category_mapping:
+  airing:
+    - "新番"
+    - "放送"
+    - "simulcast"
+    - "续作"
+    - "season"
+    - "seasonal"
+    - "首播"
+    - "延期"
+    - "完结"
+  boxoffice:
+    - "票房"
+    - "box office"
+    - "film"
+    - "劇場版"
+    - "剧场版"
+    - "movie"
+    - "映画"
+    - "disney"
+    - "pixar"
+    - "dreamworks"
+  production:
+    - "制作"
+    - "studio"
+    - "animation studio"
+    - "プロダクション"
+    - "アニメ化"
+    - "动画化"
+    - "企划"
+    - "企画"
+    - "CG"
+    - "3D"
+    - "AI 动画"
+  ip:
+    - "IP"
+    - "衍生品"
+    - "merchandise"
+    - "手办"
+    - "figure"
+    - "周边"
+    - "联动"
+    - "collaboration"
+    - "蓝光"
+    - "Blu-ray"
+    - "授权"
+  industry:
+    - "投资"
+    - "收购"
+    - "IPO"
+    - "platform"
+    - "streaming"
+    - "订阅"
+    - "subscription"
+    - "商业模式"
+    - "netflix"
+    - "crunchyroll"
+    - "sony"
+    - "腾讯"
+    - "bilibili"
+  cast:
+    - "声优"
+    - "seiyuu"
+    - "CV"
+    - "監督"
+    - "导演"
+    - "脚本"
+    - "音乐"
+    - "OST"
+  cn_anime:
+    - "国漫"
+    - "国产动画"
+    - "guochuang"
+    - "国创"
+    - "China anime"
+    - "bilibili 国创"
+
+# 分类名称映射
+categories:
+  - id: airing
+    name: "新番/播出"
+  - id: boxoffice
+    name: "剧场版/票房"
+  - id: production
+    name: "制作/Studio"
+  - id: ip
+    name: "IP/衍生品"
+  - id: industry
+    name: "产业/投资"
+  - id: cast
+    name: "声优/Staff"
+  - id: cn_anime
+    name: "国产动画"
+
+# 重点跟踪的IP/作品（AI 分析时重点展开）
+tracked_ip:
+  - name: "鬼滅の刃 / Demon Slayer"
+    priority: critical
+  - name: "呪術廻戦 / Jujutsu Kaisen"
+    priority: critical
+  - name: "ONE PIECE"
+    priority: critical
+  - name: "SPY×FAMILY"
+    priority: high
+  - name: "進撃の巨人 / Attack on Titan"
+    priority: high
+  - name: "葬送のフリーレン / Frieren"
+    priority: high
+  - name: "ガンダム / Gundam"
+    priority: high
+  - name: "攻殻機動隊 / Ghost in the Shell"
+    priority: high
+  - name: "君の名は。/ Your Name."
+    priority: medium
+  - name: "すずめの戸締まり / Suzume"
+    priority: medium
+  - name: "斗罗大陆"
+    priority: critical
+  - name: "完美世界"
+    priority: high
+  - name: "凡人修仙传"
+    priority: high
+  - name: "仙逆"
+    priority: high
+  - name: "斗破苍穹"
+    priority: high
+  - name: "剑来"
+    priority: high
+  - name: "哪吒之魔童闘海"
+    priority: critical
+  - name: "白蛇"
+    priority: medium
+  - name: "时光代理人"
+    priority: medium
+
+# 正面 & 负面关键词（用于 scoring 加权）
+positive_keywords:
+  - "破纪录"
+  - "突破"
+  - "票房大卖"
+  - "好评"
+  - "口碑"
+  - "神作"
+  - "霸权"
+  - "里程碑"
+  - "世界纪录"
+  - "new record"
+  - "breaking records"
+  - "masterpiece"
+  - "must watch"
+  - "award"
+
+negative_keywords:
+  - "炎上"
+  - "controversy"
+  - "scandal"
+  - "延期"
+  - "作画崩坏"
+  - "批评"
+  - "低评价"
+  - "打切"
+  - "canceled"

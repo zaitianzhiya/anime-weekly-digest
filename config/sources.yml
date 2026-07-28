@@ -1,0 +1,246 @@
+# ── Anime Weekly Digest — 信息来源配置 (30 sources × 7生態) ──
+# 分层：Tier 1 = DDG 真实搜索, Tier 2 = 关键词骨架
+# 类型: web_search = DDG 新闻, rss = arXiv API, api = GitHub API
+
+sources:
+  # ═══ Tier 1 — 一手信息源 (DDG 真实搜索) ═══
+  mal_news:
+    name: "MyAnimeList News"
+    tier: 1
+    ecosystem: mal_data
+    type: web_search
+    keywords: ["MyAnimeList anime news", "MAL seasonal ranking", "anime top charts"]
+    max_items: 3
+
+  ann:
+    name: "Anime News Network"
+    tier: 1
+    ecosystem: intl_media
+    type: web_search
+    keywords: ["Anime News Network", "ANN anime industry", "anime business Japan"]
+    max_items: 3
+
+  crunchyroll_news:
+    name: "Crunchyroll News"
+    tier: 1
+    ecosystem: streaming_en
+    type: web_search
+    keywords: ["Crunchyroll new anime", "Crunchyroll simulcast", "Crunchyroll license"]
+    max_items: 3
+
+  natalie_comic:
+    name: "コミックナタリー"
+    tier: 1
+    ecosystem: jp_media
+    type: web_search
+    keywords: ["コミックナタリー アニメ", "Natalie anime news", "アニメ化 発表"]
+    max_items: 3
+
+  animate_times:
+    name: "アニメイトタイムズ"
+    tier: 1
+    ecosystem: jp_media
+    type: web_search
+    keywords: ["アニメイトタイムズ 新作", "animate times anime", "アニメ 新情報"]
+    max_items: 3
+
+  animeanime_jp:
+    name: "アニメ！アニメ！"
+    tier: 1
+    ecosystem: jp_media
+    type: web_search
+    keywords: ["アニメアニメ ニュース", "anime anime jp", "アニメ 興行収入"]
+    max_items: 3
+
+  oricon_anime:
+    name: "Oricon Anime"
+    tier: 1
+    ecosystem: jp_charts
+    type: web_search
+    keywords: ["Oricon anime ranking", "オリコン アニメ BD", "アニメ 週間ランキング"]
+    max_items: 3
+
+  bilibili_guochuang:
+    name: "B站国创"
+    tier: 1
+    ecosystem: cn_platform
+    type: web_search
+    keywords: ["B站国创新番", "Bilibili 国产动画", "国创 播放量"]
+    max_items: 3
+
+  tencent_anime:
+    name: "腾讯视频动漫"
+    tier: 1
+    ecosystem: cn_platform
+    type: web_search
+    keywords: ["腾讯视频 国产动画", "国漫新番 2026", "腾讯动漫 IP"]
+    max_items: 3
+
+  thepaper_anime:
+    name: "澎湃新闻 动画"
+    tier: 1
+    ecosystem: cn_media
+    type: web_search
+    keywords: ["澎湃新闻 动画", "国漫产业 报告", "中国动漫 行业分析"]
+    max_items: 3
+
+  media_36kr_acg:
+    name: "36氪 ACG"
+    tier: 1
+    ecosystem: cn_media
+    type: web_search
+    keywords: ["36氪 动漫", "二次元 投资", "动漫 商业模式"]
+    max_items: 3
+
+  box_office_mojo:
+    name: "Box Office Mojo"
+    tier: 1
+    ecosystem: global_boxoffice
+    type: web_search
+    keywords: ["Box Office Mojo animation", "animated movie box office", "anime film revenue"]
+    max_items: 3
+
+  maoyan_anime:
+    name: "猫眼专业版 动画"
+    tier: 1
+    ecosystem: cn_boxoffice
+    type: web_search
+    keywords: ["猫眼 动画电影 票房", "中国动画电影 排片", "国漫电影 票房 2026"]
+    max_items: 3
+
+  variety_animation:
+    name: "Variety Animation"
+    tier: 1
+    ecosystem: intl_trade
+    type: web_search
+    keywords: ["Variety animation film", "Deadline animated movie", "Hollywood anime adaptation"]
+    max_items: 3
+
+  reddit_anime:
+    name: "r/anime"
+    tier: 1
+    ecosystem: community_en
+    type: web_search
+    keywords: ["Reddit r/anime top discussion", "anime seasonal ranking reddit", "anime episode discussion"]
+    max_items: 3
+
+  douban_anime:
+    name: "豆瓣动漫"
+    tier: 1
+    ecosystem: community_zh
+    type: web_search
+    keywords: ["豆瓣 动画 评分", "豆瓣 新番 排行", "豆瓣 国产动画 2026"]
+    max_items: 3
+
+  # ═══ Tier 2 — 二手聚合/补充源 (关键词骨架) ═══
+  gameguling_acg:
+    name: "游戏陀螺 ACG"
+    tier: 2
+    ecosystem: cn_aggregator
+    type: web_search
+    keywords: ["二次元 游戏 IP 联动", "ACG 产业 投资"]
+    max_items: 3
+
+  sanwenyu:
+    name: "三文娱"
+    tier: 2
+    ecosystem: cn_aggregator
+    type: web_search
+    keywords: ["三文娱 ACG 产业分析", "动漫 衍生品 数据报告"]
+    max_items: 3
+
+  crunchy_store:
+    name: "Crunchyroll Store"
+    tier: 2
+    ecosystem: streaming_en
+    type: web_search
+    keywords: ["Crunchyroll store figure", "anime Blu-ray release", "anime merchandise"]
+    max_items: 3
+
+  goodsmile:
+    name: "Good Smile Company"
+    tier: 2
+    ecosystem: jp_merch
+    type: web_search
+    keywords: ["Good Smile Company figure", "ねんどろいど 新作", "figma 発売"]
+    max_items: 3
+
+  mantanweb:
+    name: "MANTANWEB"
+    tier: 2
+    ecosystem: jp_aggregator
+    type: web_search
+    keywords: ["MANTANWEB アニメ", "アニメ マンガ ニュース"]
+    max_items: 3
+
+  netflix_anime:
+    name: "Netflix Anime"
+    tier: 2
+    ecosystem: streaming_global
+    type: web_search
+    keywords: ["Netflix original anime", "Netflix anime production", "Netflix 动画 投资"]
+    max_items: 3
+
+  toho_animation:
+    name: "東宝 TOHO"
+    tier: 2
+    ecosystem: jp_studio
+    type: web_search
+    keywords: ["東宝 アニメ映画", "TOHO animation", "TOHO anime box office"]
+    max_items: 3
+
+  kyotoani:
+    name: "京都アニメーション"
+    tier: 2
+    ecosystem: jp_studio
+    type: web_search
+    keywords: ["京都アニメーション 新作", "Kyoto Animation new project", "京アニ 劇場版"]
+    max_items: 3
+
+  mappa_ufotable:
+    name: "MAPPA / ufotable"
+    tier: 2
+    ecosystem: jp_studio
+    type: web_search
+    keywords: ["MAPPA new anime", "ufotable new project", "アニメ制作 スタジオ"]
+    max_items: 3
+
+  animetv:
+    name: "アニメTV / AnimeTV"
+    tier: 2
+    ecosystem: jp_aggregator
+    type: web_search
+    keywords: ["アニメTV 新番組", "AnimeTV new anime announcement", "アニメ 放送 スケジュール"]
+    max_items: 3
+
+  anima_academic:
+    name: "动画学术趴"
+    tier: 2
+    ecosystem: cn_aggregator
+    type: web_search
+    keywords: ["动画学术趴 深度分析", "中国动画 学术评论"]
+    max_items: 3
+
+  boxoffice_northamerica:
+    name: "北美票房吧"
+    tier: 2
+    ecosystem: cn_aggregator
+    type: web_search
+    keywords: ["北美票房 动画电影", "全球动画电影 票房排行"]
+    max_items: 3
+
+  bilibili_mall:
+    name: "B站会员购"
+    tier: 2
+    ecosystem: cn_platform
+    type: web_search
+    keywords: ["B站会员购 手办", "B站 动画 衍生品", "Bilibili anime merch"]
+    max_items: 3
+
+  eiren_jp:
+    name: "日本映画製作者連盟"
+    tier: 2
+    ecosystem: jp_charts
+    type: web_search
+    keywords: ["日本映画連盟 アニメ 興収", "eiren anime box office", "日本アニメ 映画 興行収入"]
+    max_items: 3

@@ -1,0 +1,46 @@
+# ── Anime Weekly Digest — 质量评分配置 ──
+
+# 可信度评分权重（跨生态独立源交叉验证）
+scoring:
+  tier_1_weight: 40      # Tier 1 源每个 40 分
+  tier_2_weight: 25      # Tier 2 源每个 25 分
+  max_score: 100         # 封顶
+  min_score_for_A: 80    # A 级 = 交叉验证 3+ 独立源
+  min_score_for_B: 60    # B 级 = 2 独立源
+  min_score_for_C: 30    # C 级 = 单一源确认
+                          # D 级 = 30 以下 / 仅骨架关键词
+
+# 生态系统独立权重（用于交叉验证）
+ecosystem_weights:
+  mal_data: 0.9          # MyAnimeList 数据
+  intl_media: 1.0        # 国际媒体 (ANN)
+  streaming_en: 0.8      # 英语流媒体
+  jp_media: 1.0          # 日本媒体
+  jp_charts: 0.9         # 日本排行
+  cn_platform: 0.9       # 中国平台
+  cn_media: 0.9          # 中国媒体
+  global_boxoffice: 1.0  # 全球票房
+  cn_boxoffice: 0.8      # 中国票房
+  community_en: 0.7      # 英语社区
+  community_zh: 0.7      # 中文社区
+  cn_aggregator: 0.8     # 中文聚合
+  jp_aggregator: 0.9     # 日本聚合
+  streaming_global: 0.8  # 全球流媒体
+  jp_studio: 0.9         # 日本制作公司
+  jp_merch: 0.7          # 周边/手办
+  intl_trade: 0.9        # 国际行业媒体
+
+# 5 维度评分权重
+dimension_weights:
+  audience_impact: 30       # 受众影响力
+  industry_significance: 25 # 产业价值
+  creative_merit: 20        # 创作水平
+  commercial_performance: 15 # 商业表现
+  cultural_crossover: 10     # 文化影响力
+
+# 质量过滤阈值
+filter:
+  min_title_length: 10     # 标题最短
+  min_desc_length: 30      # 描述最短
+  require_citation: true   # 必须有关联源
+  max_age_days: 14         # 最多 14 天前
