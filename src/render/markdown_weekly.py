@@ -1,4 +1,4 @@
-"""Markdown renderer — weekly report with clickable links and poster images."""
+"""Markdown renderer — weekly report with link + poster columns."""
 
 from datetime import datetime
 from pathlib import Path
@@ -7,23 +7,25 @@ from src.collectors.base import EventRecord
 
 
 class MarkdownRenderer:
-    """Render weekly reports with links and poster images."""
+    """Render weekly reports with separate link and poster image columns."""
 
     def __init__(self, output_dir: str):
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
 
-    def _event_link(self, r: EventRecord) -> str:
-        """Render event title as clickable link if URL exists, with image if available."""
+    def _title_link(self, r: EventRecord) -> str:
+        """Plain title or clickable link."""
         title = r.title[:80]
         if r.url:
-            link = f"[{title}]({r.url})"
-        else:
-            link = title
-        # Add poster image thumbnail if available
+            return f"[{title}]({r.url})"
+        return title
+
+    def _poster_img(self, r: EventRecord) -> str:
+        """Poster thumbnail as Markdown image or empty."""
         if r.image_url:
-            link = f'<img src="{r.image_url}" width="80" style="vertical-align:middle;border-radius:4px;margin-right:6px"/>' + link
-        return link
+            title_short = r.title[:40].replace('"', '')
+            return f'<img src="{r.image_url}" alt="{title_short}" width="100" style="border-radius:4px"/>'
+        return ""
 
     def render_weekly_report(
         self,
@@ -57,60 +59,44 @@ class MarkdownRenderer:
             lines.append(deep_analysis)
             lines.extend(["", "---", ""])
 
-        # Top N table with clickable links + images
+        # Top N table — title / link / poster / organization / score / ecosystems / categories
         top_n = min(len(records), 20)
         lines.append(f"## Top {top_n} 事件")
         lines.append("")
-        lines.append("| # | 事件 | 组织 | 可信度 | 独立源 | 分类 |")
-        lines.append("|---|------|------|--------|--------|------|")
+        lines.append("| # | 事件 | 链接 | 海报 | 组织 | 可信度 | 独立源 | 分类 |")
+        lines.append("|---|------|------|------|------|--------|--------|------|")
 
         for i, r in enumerate(records[:top_n], 1):
             cats = " ".join(f"`{c}`" for c in r.categories[:3]) if r.categories else "-"
-            events_col = self._event_link(r)
+            poster = self._poster_img(r)
+            title_col = r.title[:60]
+            link_col = f"[🔗]({r.url})" if r.url else "-"
             lines.append(
-                f"| {i} | {events_col} | {r.organization} | "
+                f"| {i} | {title_col} | {link_col} | {poster} | {r.organization} | "
                 f"{r.confidence_grade}({r.confidence_score:.0f}) | "
                 f"{r.independent_ecosystems} | {cats} |"
             )
 
         lines.extend(["", "---", ""])
 
-        # Category sections
+        # Category sections — same column layout
         lines.append("## 分类整理")
         lines.append("")
         cats = self._group_by_category(records)
         for cat, crecs in sorted(cats.items()):
             lines.append(f"### {cat}")
             lines.append("")
-            lines.append("| # | 事件 | 组织 | 可信度 | 来源 |")
-            lines.append("|---|------|------|--------|------|")
+            lines.append("| # | 事件 | 链接 | 海报 | 组织 | 可信度 |")
+            lines.append("|---|------|------|------|------|--------|")
             for i, r in enumerate(crecs, 1):
-                sources = ", ".join(f"[{c.source_name}]({c.url})" if c.url else c.source_name for c in r.citations[:2])
+                poster = self._poster_img(r)
+                title_col = r.title[:60]
+                link_col = f"[🔗]({r.url})" if r.url else "-"
                 lines.append(
-                    f"| {i} | {self._event_link(r)} | {r.organization} | "
-                    f"{r.confidence_grade} | {sources} |"
+                    f"| {i} | {title_col} | {link_col} | {poster} | {r.organization} | "
+                    f"{r.confidence_grade} |"
                 )
             lines.append("")
-
-        # Image gallery: show posters for events that have images
-        img_events = [r for r in records if r.image_url]
-        if img_events:
-            lines.extend([
-                "---",
-                "",
-                "## 📸 视觉一览",
-                "",
-                '<div style="display:flex;flex-wrap:wrap;gap:12px">',
-                "",
-            ])
-            for r in img_events:
-                title_short = r.title[:40]
-                lines.append(
-                    f'<a href="{r.url}" target="_blank">'
-                    f'<img src="{r.image_url}" alt="{title_short}" '
-                    f'title="{title_short}" width="150" style="border-radius:6px;object-fit:cover"/></a>'
-                )
-            lines.extend(["", "</div>", ""])
 
         # Stats
         if stats:
